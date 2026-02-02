@@ -68,7 +68,7 @@ body {
     margin: 0 auto 1rem;
 }
 
-.progress-bar {
+.progess-bar {
     position: relative;
     left: 0;
     right: 0;
@@ -77,7 +77,7 @@ body {
     border-radius: var(--radius);
 }
 
-.progress-value {
+.prodress-value {
     position: absolute;
     top: 0;
     bottom: 0;
