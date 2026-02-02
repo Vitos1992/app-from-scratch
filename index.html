@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Tech Tracker</title>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="heading">Ваш прогрес</h2>
+        <div class="progress">
+            <div class="progess-bar">
+                <div class="prodress-value"></div>
+            </div>
+        </div>
+
+        <div class="row" id="content">
+            <div class="card">
+                <h3>HTML</h3>
+            </div>
+            <div class="card">
+                <h3>CSS</h3>
+            </div>
+            <div class="card">
+                <h3>JavaScript</h3>
+            </div>
+            <div class="card">
+                <h3>Git</h3>
+            </div>
+            <div class="card">
+                <h3>React</h3>
+            </div>
+        </div>
+
+        <form class="form">
+            <h2 class="heading">Додати технологію</h2>
+            <div class="form-control">
+                <label for="">Назва</label>
+                <input type="text" id="title" name="title" placeholder="Введіть назву">
+            </div>
+
+            <div class="form-control">
+                <label for="description">Опис</label>
+                <textarea name="description" id="description" placeholder="Введіть опис"></textarea>
+            </div>
+            <button type="submit" class="btn">Створити</button>
+        </form>
+    </div>
+
+    <div class="modal" id="js">
+        <h2>JavaScript</h2>
+        <p>
+            JavaScript (JS) — це високо рівнева, інтерпретована мова програмування, що використовується для створення
+            інтерактивних веб-сторінок, динамічного контенту (анімації, форм), веб-додатків та навіть серверного бекенду
+            через Node.js, дозволяючи браузерам додавати функціональність без перезавантаження сторінки.
+        </p>
+        <hr>
+        <div>
+            <input type="checkbox" id="done">
+            <label for="done">Вивчив</label>
+        </div>
+    </div>
+    <div class="modal-backdrop" id="backdrop"></div>
+    
+    <div class="modal" id="html">
+        <h2>JavaScript</h2>
+        <p>
+            HTML (HyperText Markup Language) — це стандартна мова розмітки, яка використовується для створення структури та
+            вмісту веб-сторінок, визначаючи, як браузер відображає текст, зображення, посилання, списки, таблиці та інші
+            елементи, формуючи скелет будь-якого сайту.
+        </p>
+        <hr>
+        <div>
+            <input type="checkbox" id="done">
+            <label for="done">Вивчив</label>
+        </div>
+    </div>
+    <div class="modal-backdrop" id="backdrop"></div>
+    
+    <div class="modal" id="css">
+        <h2>JavaScript</h2>
+        <p>
+            CSS (Cascading Style Sheets — каскадні таблиці стилів) — це мова стилів, яка використовується для оформлення
+            зовнішнього вигляду вебсторінок, створених за допомогою HTML.
+        </p>
+        <hr>
+        <div>
+            <input type="checkbox" id="done">
+            <label for="done">Вивчив</label>
+        </div>
+    </div>
+    
+    <div class="modal" id="git">
+        <h2>JavaScript</h2>
+        <p>
+            Git (Гіт) — це найпопулярніша розподілена система керування версіями, створена Лінусом Торвальдсом у 2005 році
+            для відстеження змін у вихідному коді програм.
+        </p>
+        <hr>
+        <div>
+            <input type="checkbox" id="done">
+            <label for="done">Вивчив</label>
+        </div>
+    </div>
+    
+    <div class="modal" id="React">
+        <h2>JavaScript</h2>
+        <p>
+            React (або React.js/ReactJS) — це популярна відкрита JavaScript-бібліотека для створення інтерфейсів користувача
+            (UI) у вебзастосунках, розроблена та підтримувана компанією Meta (Facebook).
+        </p>
+        <hr>
+        <div>
+            <input type="checkbox" id="done">
+            <label for="done">Вивчив</label>
+        </div>
+    </div>
+    <div class="modal-backdrop" id="backdrop"></div>
+
+
+
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
