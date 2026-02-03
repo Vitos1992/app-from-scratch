@@ -20,8 +20,15 @@ const technologies = [
 
 function openCard(event) {
     const date = event.target.dataset;
-    console.log(date.type);
+    const tech = technologies.find(t => t.type === date.type);
+    if (!tech) return;
 
+    openModal('');
+
+    
+}
+
+function openModal(html, title) {
     js.classList.add('open');
 }
 
