@@ -169,6 +169,11 @@ function createTech(event) {
     init();
 }
 
+// методи для зберігання інформації
+function saveState() {}
+
+function getState() {}
+
 init();
 //renderCards();
 
