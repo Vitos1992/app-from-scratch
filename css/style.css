@@ -52,6 +52,12 @@ body {
     border-radius: var(--radius);
     border: var(--border);
 
+    cursor: grab;
+
+}
+
+.card.dragging {
+    opacity: 0.5;
 }
 
 .card.done {

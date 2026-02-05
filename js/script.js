@@ -69,6 +69,45 @@ function renderCards() {
     }
 }
 
+let draggedType = null;
+
+content.addEventListener('dragstart', (e) => {
+    const card = e.target.closest('.card');
+    if (!card) return;
+
+    draggedType = card.dataset.type;
+    card.classList.add('dragging');
+});
+
+content.addEventListener('dragend', (e) => {
+    const card = e.target.closest('.card');
+    if (!card) return;
+
+    card.classList.remove('dragging');
+});
+
+content.addEventListener('dragover', (e) => {
+    e.preventDefault(); // ОБОВʼЯЗКОВО для drop
+});
+
+content.addEventListener('drop', (e) => {
+    const targetCard = e.target.closest('.card');
+    if (!targetCard || draggedType === targetCard.dataset.type) return;
+
+    const fromIndex = technologies.findIndex(t => t.type === draggedType);
+    const toIndex = technologies.findIndex(t => t.type === targetCard.dataset.type);
+
+    if (fromIndex === -1 || toIndex === -1) return;
+
+    // міняємо місцями
+    const [moved] = technologies.splice(fromIndex, 1);
+    technologies.splice(toIndex, 0, moved);
+
+    saveState();
+    renderCards();
+});
+
+
 function renderProgress() {
     const percent = computeProgressPercent();
     console.log(percent);
@@ -131,10 +170,10 @@ function toCard(tech) {
     // якщо tech.done тоді string 'done' або пустий рядок
     const doneClass = tech.done ? 'done' : '';
     return `
-        <div class="card ${doneClass}" data-type="${tech.type}">
+        <div class="card ${doneClass}" data-type="${tech.type}" draggable="true">
             <h3 data-type="${tech.type}">${tech.title}</h3>
         </div>
-        `
+        `;
 }
 
 function isInvalid(title, description) {
