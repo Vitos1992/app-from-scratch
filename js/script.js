@@ -57,7 +57,7 @@ function init() {
 function renderCards() {
     // додаем клас у разі не обрання техногії
     if (technologies.length === 0) {
-        content.innerHTML = '<p class="empty">Оберіть мови: HTML, CSS, JavaScript, Git, React!</p>'
+        content.innerHTML = '<p class="empty">Оберіть мови які ви опанували, наприклад: HTML, CSS, JavaScript, Git, React!</p>'
     } else {
         let html = '';
     for (let i = 0; i < technologies.length; i++) {
@@ -71,6 +71,7 @@ function renderCards() {
 
 function renderProgress() {
     const percent = computeProgressPercent();
+    console.log(percent);
     
     // колір прогресу навчання
     let background
@@ -111,7 +112,7 @@ function toModal(tech) {
         <hr>
         <div>
             <input type="checkbox" id="done" ${checked} data-type="${tech.type}">
-            <label for="done">Вивчаю на теперешній час</label>
+            <label for="done">Вивчив</label>
         </div>
         `;
 }
