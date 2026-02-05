@@ -15,14 +15,16 @@ form.addEventListener('submit', createTech); // метод
 
 // назва сайту
 const APP_TITLE = document.title;
+const T_KEY = 'MY_TECHS';
 
-const technologies = [
-    {title: 'HTML', description: 'HTML Text', type: 'html', done: true},
-    {title: 'CSS', description: 'CSS Text', type: 'css', done: false},
-    {title: 'JavaScript', description: 'JavaScript Text', type: 'js', done: false},
-    {title: 'Git', description: 'Git Text', type: 'git', done: false},
-    {title: 'React', description: 'React Text', type: 'react', done: false},
-];
+const technologies = getState();
+//[
+//    {title: 'HTML', description: 'HTML Text', type: 'html', done: true},
+//    {title: 'CSS', description: 'CSS Text', type: 'css', done: false},
+//    {title: 'JavaScript', description: 'JavaScript Text', type: 'js', done: false},
+//    {title: 'Git', description: 'Git Text', type: 'git', done: false},
+//    {title: 'React', description: 'React Text', type: 'react', done: false},
+//];
 
 function openCard(event) {
     const data = event.target.dataset;
@@ -104,7 +106,7 @@ function toModal(tech) {
     // якщо tech.done тоді string 'checked' або пустий рядок
     const checked = tech.done ? 'checked' : '';
     return `
-        <h2>${tech.title}}</h2>
+        <h2>${tech.title}</h2>
         <p>${tech.description}</p>
         <hr>
         <div>
@@ -114,11 +116,13 @@ function toModal(tech) {
         `;
 }
 
+// виполнення ттехнології
 function toggleTech(event) {
     const type = event.target.dataset.type;
     const tech = technologies.find(t => t.type === type);
     tech.done = event.target.checked;
 
+    saveState();
     init();
 }
 
@@ -166,13 +170,19 @@ function createTech(event) {
     title.value = '';  
     description.value = ''; // після додавання input очищається
 
+    saveState();
     init();
 }
 
 // методи для зберігання інформації
-function saveState() {}
+function saveState() {
+    localStorage.setItem(T_KEY, JSON.stringify(technologies));
+}
 
-function getState() {}
+function getState() {
+    const raw = localStorage.getItem(T_KEY);
+    return raw ? JSON.parse(raw) : [];
+}
 
 init();
 //renderCards();
