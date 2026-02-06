@@ -70,30 +70,30 @@ function renderCards() {
 }
 
 let draggedType = null;
+// делегування події перед початком стягнення єлементу
+content.addEventListener('dragstart', (event) => {
+    const card = event.target.closest('.card');
+    if (!card) return; // якщо не картка тягнеться - виходимо
 
-content.addEventListener('dragstart', (e) => {
-    const card = e.target.closest('.card');
-    if (!card) return;
-
-    draggedType = card.dataset.type;
+    draggedType = card.dataset.type; //зберігає який єлемент тягнемо
     card.classList.add('dragging');
 });
-
-content.addEventListener('dragend', (e) => {
-    const card = e.target.closest('.card');
+// умова для відпускання єлементу
+content.addEventListener('dragend', (event) => {
+    const card = event.target.closest('.card'); 
     if (!card) return;
 
     card.classList.remove('dragging');
 });
 
-content.addEventListener('dragover', (e) => {
-    e.preventDefault(); // ОБОВʼЯЗКОВО для drop
+content.addEventListener('dragover', (event) => {
+    event.preventDefault(); // ОБОВʼЯЗКОВО для drop так без події 'preventDefault()' не спрацює
 });
-
-content.addEventListener('drop', (e) => {
-    const targetCard = e.target.closest('.card');
+// головна логіка умови
+content.addEventListener('drop', (event) => {
+    const targetCard = event.target.closest('.card');
     if (!targetCard || draggedType === targetCard.dataset.type) return;
-
+    // пошук позиції в масиві
     const fromIndex = technologies.findIndex(t => t.type === draggedType);
     const toIndex = technologies.findIndex(t => t.type === targetCard.dataset.type);
 
