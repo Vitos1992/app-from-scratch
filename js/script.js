@@ -248,18 +248,6 @@ function getState() {
 }
 
 init();
-//renderCards();
-
-
-
-
-
-// function openCard() {
-//     html.classList.add('open');
-// }
-// function closeModaL() {
-//     html.classList.remove('open');
-//
 
 // ДЗ
 // додати кнопку для форми "додати технологію"

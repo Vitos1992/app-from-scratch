@@ -242,6 +242,8 @@ body {
 }
 
 .heading_btn {
+    display: block;
+    margin: 0 auto;
     font-size: 26px;
     font-family: inherit;
     padding: .7rem 2rem;
@@ -249,7 +251,7 @@ body {
     border: 1px solid #ccc;
     background: #4D5AE5;
     border-radius: var(--radius);
-    width: 75%;
+    width: 50%;
     height: 60px;
     transition: background-color 250ms linear;
 }
