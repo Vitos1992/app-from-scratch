@@ -1,17 +1,16 @@
-//const html1 = document.querySelector('#html');
-//const css = document.querySelector('#css');
-//const git = document.querySelector('#git');
-//const react = document.querySelector('#react');
 const js = document.querySelector('#js');
 const content = document.querySelector('#content');
 const backdrop = document.querySelector('#backdrop');
 const progress = document.querySelector('#progress');
 const form = document.querySelector('#form');
+const btnForm = document.querySelector('#btn_form');
 
 content.addEventListener('click', openCard);
 backdrop.addEventListener('click', closeModaL);
 js.addEventListener('change', toggleTech); // метод toggleTech для перемикання із одного стану в інший
 form.addEventListener('submit', createTech); // метод
+btnForm.addEventListener('click', openForm);
+
 
 // назва сайту
 const APP_TITLE = document.title;
@@ -46,8 +45,30 @@ function openModal(html, title = APP_TITLE) {
 // закриття модального вікна
 function closeModaL() {
     document.title = APP_TITLE;
+
     js.classList.remove('open');
+    form.classList.remove('open');
+    backdrop.classList.remove('open');
 }
+// метод закривання всіх відкон через "Esc"
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+        closeModaL();
+    }
+});
+
+// відкриття форми
+function openForm() {
+    form.classList.add('open');
+    backdrop.classList.add('open');
+}
+
+function closeAll() {
+    form.classList.remove('open');
+    backdrop.classList.remove('open');
+} 
+
+
 
 function init() {
     renderCards();
@@ -182,7 +203,7 @@ function isInvalid(title, description) {
 
 function createTech(event) {
     event.preventDefault(); //відключення автооновлення сторінки
-
+    
     //const title = event.target.title;
     //const description = event.target.description;
     const {title, description} = event.target;
@@ -209,6 +230,8 @@ function createTech(event) {
     technologies.push(newTech); // метод push додає елемент у кінець масиву
     title.value = '';  
     description.value = ''; // після додавання input очищається
+    
+    form.classList.remove('open');
 
     saveState();
     init();

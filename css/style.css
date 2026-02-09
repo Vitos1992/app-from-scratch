@@ -1,8 +1,10 @@
 
 :root {
-    --green: #73BA3C;
+    --green: #73ba3c;
+    --hoverGreen: #528728;
     --orange: #F99415;
     --red: #e75a5a;
+    --text: #fff;
     --border: 1px solid rgba(151, 158, 162, 0.3);
     --radius: 6px;
     --border-color: rgba(151, 158, 162, 0.3);
@@ -16,7 +18,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background: #fbfbfb;
+    background: #fff;
 }
 
 .container {
@@ -34,6 +36,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     margin-right: -1rem;
+    margin-bottom: 40px;
 }
 
 .row .card {
@@ -54,7 +57,7 @@ body {
     border: var(--border);
 
     cursor: grab;
-    transition: transform 0.25s ease;
+    transition: background-color 250ms linear;
 
 }
 
@@ -64,10 +67,16 @@ body {
 
 .card.done {
     background: var(--green);
-    color: #fff; 
+    color: var(--text); 
+    
+}
+
+.card:hover.done {
+    background: var(--hoverGreen);
 }
 
 .card:hover {
+    /* background: var(--hoverGreen); */
     cursor: pointer;
     box-shadow: 4px 4px 8px rgba(0,0,0,.22);
 }
@@ -91,7 +100,7 @@ body {
     bottom: 0;
     left: 0;
     background: #000;
-    color: #fff;
+    color: var(--text);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -136,6 +145,10 @@ body {
     display: block;
 }
 
+.modal-backdrop.open {
+    display: block;
+}
+
 .modal-backdrop {
     display: none;
     position: fixed;
@@ -144,6 +157,7 @@ body {
     left: 0;
     bottom: 0;
     background: rgba(0, 0, 0, .5);
+    z-index: 100;
 }
 
 .empty {
@@ -151,12 +165,18 @@ body {
     color: green;
 }
 
+
 .form {
+    display: none;
+}
+
+.form.open {
     display: flex;
     flex-direction: column;
     position: fixed;
     left: 50%;
-    top: 50%;
+    top: 100px;
+    background: #fff;
     border-radius: var(--radius);
     border: var(--border);
     padding: 1.5rem;
@@ -165,6 +185,10 @@ body {
     z-index: 200;
     box-shadow: 4px 4px 8px rgba(0,0,0,.22);
     
+}
+
+.form.open + .modal-backdrop {
+    display: block;
 }
 
 .form-control label {
@@ -218,33 +242,41 @@ body {
 }
 
 .heading_btn {
+    font-size: 26px;
     font-family: inherit;
     padding: .7rem 2rem;
+    color: #fff;
     border: 1px solid #ccc;
-    background: #f7f7f7;
+    background: #4D5AE5;
     border-radius: var(--radius);
-    transition: .3s background;
+    width: 75%;
+    height: 60px;
+    transition: background-color 250ms linear;
 }
 
 .btn { 
     font-family: inherit;
     padding: .7rem 2rem;
     border: 1px solid #ccc;
-    background: #f7f7f7;
+    color: var(--text);
+    background: #4D5AE5;
     border-radius: var(--radius);
-    transition: .3s background;
+    transition: background-color 250ms linear;
     text-align: center;
 }
 
 .btn:focus,
 .heading_btn:focus {
     outline: none;
+    background: #404bbf;
+    color: var(--text);
 }
 
 .btn:hover,
 .heading_btn:hover {
-    border-color: #F99415;
-    background: #fff;
+    border-color: var(--text);
+    background: #404bbf;
+    color: var(--text);
     cursor: pointer;
 }
 
