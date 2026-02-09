@@ -230,8 +230,6 @@ function createTech(event) {
     technologies.push(newTech); // метод push додає елемент у кінець масиву
     title.value = '';  
     description.value = ''; // після додавання input очищається
-    
-    form.classList.remove('open');
 
     saveState();
     init();
