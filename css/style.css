@@ -66,8 +66,9 @@ body {
 }
 
 .row .card {
-    width: calc(960px / 3);
-    flex-grow: 1;
+    flex: 1 1 calc(33.333% - 1rem);
+    max-width: calc(33.333% - 1rem);
+    min-width: 220px;
     margin-bottom: 1rem;
     margin-right: 1rem;
 }
@@ -420,6 +421,84 @@ body {
 
     filter: brightness(1.1);
     box-shadow: 0 0 20px rgba(45, 212, 191, 0.4);
+}
+
+/* === Responsive rules === */
+@media (max-width: 900px) {
+    .container {
+        padding: 1.5rem;
+        max-width: 720px;
+    }
+
+    .row .card {
+        flex: 1 1 calc(50% - 1rem);
+        max-width: calc(50% - 1rem);
+    }
+
+    .modal.open,
+    .form.open {
+        width: 90%;
+        max-width: 640px;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 60px;
+        padding: 1rem;
+    }
+
+    .heading_btn {
+        width: 70%;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .row {
+        margin-right: 0;
+    }
+
+    .row .card {
+        flex: 1 1 100%;
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: .75rem;
+    }
+
+    .card {
+        padding: 1rem;
+    }
+
+    .heading {
+        font-size: 1.05rem;
+    }
+
+    .heading_btn {
+        width: 100%;
+        font-size: 18px;
+        height: auto;
+        padding: .75rem 1rem;
+    }
+
+    .progess-bar {
+        height: 20px;
+    }
+
+    .prodress-value {
+        font-size: 0.9rem;
+    }
+
+    .modal.open,
+    .form.open {
+        width: calc(100% - 2rem);
+        left: 50%;
+        transform: translateX(-50%);
+        top: 30px;
+        padding: 0.9rem;
+        max-width: 480px;
+    }
 }
 
 
